@@ -29,9 +29,14 @@ const PopularMenu = () => {
         ))}
       </div>
       <div className="text-center mt-8">
-        <button className="text-[#BB8506] font-medium py-3 px-7  border-b-4 border-[#BB8506] rounded-lg hover:bg-[#1F2937] hover:border-[#1F2937] hover:text-white">
+        <a
+          href="https://www.profitableratecpm.com/eg4ptcepz?key=853c406d42ed5484977f464884b76184"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#BB8506] font-medium py-3 px-7  border-b-4 border-[#BB8506] rounded-lg hover:bg-[#1F2937] hover:border-[#1F2937] hover:text-white"
+        >
           View Full Menu
-        </button>
+        </a>
       </div>
     </section>
   );

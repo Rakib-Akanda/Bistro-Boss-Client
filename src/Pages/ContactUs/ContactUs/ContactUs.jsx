@@ -11,7 +11,9 @@ const ContactUs = () => {
       {/*  contact us Banner Section  */}
       <div></div>
       {/* Main section */}
-      <div className="max-w-screen-xl mx-auto"></div>
+      <div className="max-w-screen-xl mx-auto">
+        <h3 className="py-20">contactUs</h3>
+      </div>
     </div>
   );
 };

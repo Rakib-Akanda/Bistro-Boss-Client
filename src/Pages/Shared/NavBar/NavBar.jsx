@@ -5,11 +5,16 @@ import { Link, NavLink } from "react-router-dom";
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
 import useAdmin from "../../../Hooks/useAdmin";
+// import { useState } from "react";
+import useAds from "../../../Hooks/useAds";
 const NavBar = () => {
   const { user, logout } = useAuth();
   const [isAdmin] = useAdmin();
   const { t, i18n } = useTranslation();
   const [cart] = useCart();
+  // const [navClickCount, setNavClickCount] = useState(0);
+  // const navigate = useNavigate();
+  const [handleAdsClick] = useAds();
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem("i18nextLng", lang);
@@ -24,11 +29,33 @@ const NavBar = () => {
   const handleLogOut = () => {
     logout();
   };
+  // chile ai handleNaveClick ke hook ba normally onno ekta file kore export korte pari;
+  // const handleAdsClick = (e, path) => {
+  //   e.preventDefault(); // সবসময় prevent করবো
+  //   if (navClickCount >= 2) {
+  //     setNavClickCount(0);
+  //   }
+  //   if (navClickCount <= 1) {
+  //     window.open(
+  //       "https://www.profitableratecpm.com/eg4ptcepz?key=853c406d42ed5484977f464884b76184",
+  //       "_blank"
+  //     );
+  //     setNavClickCount((prev) => prev + 1);
+  //     console.log(navClickCount);
+  //   } else {
+  //     if (navClickCount > 2) {
+  //       setNavClickCount(0);
+  //     }
+  //     navigate(path);
+  //   }
+  // };
+
   const navOptions = (
     <>
       <li>
         <NavLink
           to={"/"}
+          onClick={(e) => handleAdsClick(e, "/")}
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25]" : "text-white"
           }
@@ -39,6 +66,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to={"/contactUs"}
+          onClick={(e) => handleAdsClick(e, "/contactUs")}
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25]" : "text-white"
           }
@@ -50,6 +78,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to={"/OurMenu"}
+          onClick={(e) => handleAdsClick(e, "OurMenu")}
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25]" : "text-white"
           }
@@ -60,6 +89,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to={"/Order/Salads"}
+          onClick={(e) => handleAdsClick(e, "/Order/Salads")}
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25]" : "text-white"
           }
@@ -75,6 +105,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to={"/dashboard/adminHome"}
+            onClick={(e) => handleAdsClick(e, "/dashboard/adminHome")}
             className={({ isActive }) =>
               isActive ? "text-[#EEFF25]" : "text-white"
             }
@@ -87,6 +118,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to={"/dashboard/userHome"}
+            onClick={(e) => handleAdsClick(e, "/dashboard/userHome")}
             className={({ isActive }) =>
               isActive ? "text-[#EEFF25]" : "text-white"
             }
@@ -97,7 +129,10 @@ const NavBar = () => {
       )}
       {/* Cart */}
       <li className={"relative"}>
-        <Link to={"/dashboard/cart"}>
+        <Link
+          to={"/dashboard/cart"}
+          onClick={(e) => handleAdsClick(e, "/dashboard/cart")}
+        >
           <FaCartShopping className="text-3xl" />
           <div className="absolute top-0  right-0 left-5 bottom-3 w-[24px] h-[24px] bg-red-600 rounded-full shadow-md flex flex-col items-center justify-center text-center ">
             {user ? <small>+{cart?.length}</small> : <small>0</small>}
